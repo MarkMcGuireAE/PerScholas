@@ -1,6 +1,8 @@
+require("dotenv").config()
 const express = require("express")
 const app = express ()
 const methodOverride = require("method-override")
+const mongoConfig = require("./config")
 
 
 const PORT = 2000
@@ -31,6 +33,7 @@ app.get("/", (req, res) => {
 
 // listen
 app.listen(PORT, () => {
-    console.log("listening on port:" + PORT)
+    console.log("listening on port:" + PORT, process.env.MONGO_URL)
+    mongoConfig()
 })
 
